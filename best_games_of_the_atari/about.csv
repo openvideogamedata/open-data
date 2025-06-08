@@ -1,2 +1,5 @@
-Title,Year,Tags,SourceURL
-Best Games of the Atari,,"console, atari",https://opcfg.kontek.net/archive/atarifavs1.html
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Retrododo,https://retrododo.com/best-atari-2600-games/,157,retrododo - 2023-05-31_14-33-07.csv
+Ew,https://ew.com/article/2013/01/25/the-10-best-atari-games/,242,ew - 2023-06-24_15-39-20.csv
+GamesRadar+,https://www.gamesradar.com/best-atari-2600-games-all-time/,129,gamesradar+ - 2024-05-03_02-58-52.csv
+Opcfg,https://opcfg.kontek.net/archive/atarifavs1.html,392,opcfg - 2024-05-03_02-58-53.csv

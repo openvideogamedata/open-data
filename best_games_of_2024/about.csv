@@ -1,2 +1,8 @@
-Title,Year,Tags,SourceURL
-Best Games of 2024,2024,year,https://www.theguardian.com/games/2024/dec/19/the-20-best-video-games-of-2024
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Eurogamer,https://www.eurogamer.net/the-50-best-games-of-2024-ranked,146,eurogamer - 2025-01-16_21-29-18.csv
+Polygon,https://www.polygon.com/what-to-play/24078256/best-video-games-2024,133,polygon - 2025-01-16_21-39-50.csv
+Empireonline,https://www.empireonline.com/gaming/features/best-games-2024/,246,empireonline - 2025-01-17_20-08-17.csv
+Denofgeek,https://www.denofgeek.com/games/best-games-2024-ranked/,171,denofgeek - 2025-01-17_20-08-18.csv
+Time,https://time.com/7199868/best-video-games-2024/,132,time - 2025-01-17_20-08-18.csv
+Gamerant,https://gamerant.com/top-best-video-game-2024/,218,gamerant - 2025-01-17_20-08-19.csv
+The Guardian,https://www.theguardian.com/games/2024/dec/19/the-20-best-video-games-of-2024,145,the guardian - 2025-01-17_20-08-20.csv

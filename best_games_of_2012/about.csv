@@ -1,2 +1,3 @@
-Title,Year,Tags,SourceURL
-Best Games of 2012,2012,year,https://www.slantmagazine.com/games/the-25-best-video-games-of-2012/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Gamerant,https://gamerant.com/top-10-games-2012/,218,gamerant - 2023-06-15_01-49-06.csv
+Slantmagazine,https://www.slantmagazine.com/games/the-25-best-video-games-of-2012/,153,slantmagazine - 2023-06-15_01-49-08.csv

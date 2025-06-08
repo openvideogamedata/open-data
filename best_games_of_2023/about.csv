@@ -1,2 +1,28 @@
-Title,Year,Tags,SourceURL
-Best Games of 2023,2023,year,https://www.digitalspy.com/tech/g46154192/best-games-of-2023/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Gameinformer,https://www.gameinformer.com/topreviews2023,254,gameinformer - 2023-11-08_03-10-02.csv
+Gq-magazine,https://www.gq-magazine.co.uk/culture/gallery/best-games-2023,207,gq-magazine - 2023-11-08_03-10-03.csv
+Inverse,https://www.inverse.com/gaming/best-video-games-2023,238,inverse - 2023-11-08_03-10-04.csv
+Opencritic,https://opencritic.com/browse/all/2023,128,opencritic - 2023-11-08_03-10-04.csv
+Metacritic,https://www.metacritic.com/browse/game/all/all/current-year/,141,metacritic - 2023-11-09_01-30-28.csv
+IMDb,"https://www.imdb.com/search/title/?title_type=video_game&release_date=2023-01-01,2023-12-31&sort=user_rating,desc",222,imdb - 2023-11-09_01-37-51.csv
+Time,https://time.com/6340124/best-video-games-2023/,132,time - 2023-11-30_19-59-49.csv
+Whatculture,https://whatculture.com/amp/gaming/20-best-video-games-of-2023-ranked,266,whatculture - 2023-12-03_15-54-30.csv
+Paste Magazine,https://www.pastemagazine.com/games/best-games/the-best-games-of-2023,127,paste magazine - 2023-12-05_02-50-25.csv
+Slantmagazine,https://www.slantmagazine.com/features/the-25-best-video-games-of-2023/,153,slantmagazine - 2023-12-05_02-50-26.csv
+Dexerto,https://www.dexerto.com/gaming/best-games-of-2023-2410804/,175,dexerto - 2023-12-05_16-56-59.csv
+Nme,https://www.nme.com/en_au/features/gaming-features/best-games-2023-switch-xbox-playstation-pc-3553559,154,nme - 2023-12-05_16-57-00.csv
+Polygon,https://www.polygon.com/23648669/best-video-games-2023,133,polygon - 2023-12-05_16-57-02.csv
+Vulture,https://www.vulture.com/article/best-video-games-2023.html,306,vulture - 2023-12-06_02-28-20.csv
+Theringer,https://www.theringer.com/video-games/2023/12/7/23992057/best-video-games-2023-top-10-pc-playstation-switch-xbox,307,theringer - 2023-12-09_03-05-53.csv
+Washingtonpost,https://www.washingtonpost.com/entertainment/video-games/2023/12/08/best-video-games-2023/,308,washingtonpost - 2023-12-09_03-05-54.csv
+GamesRadar+,https://www.gamesradar.com/best-games-2023/,129,gamesradar+ - 2023-12-14_13-13-52.csv
+Rollingstone,https://www.rollingstone.com/culture/culture-lists/best-video-games-2023-1234923415/,309,rollingstone - 2023-12-14_13-13-53.csv
+The Guardian,https://www.theguardian.com/culture/2023/dec/18/the-20-best-video-games-of-2023,145,the guardian - 2024-01-13_00-01-25.csv
+Kotaku,https://kotaku.com/goty-best-games-2023-totk-baldurs-gate-3-alan-wake-2-1851109182,147,kotaku - 2024-01-13_00-01-27.csv
+Empireonline,https://www.empireonline.com/gaming/features/best-games-2023/,246,empireonline - 2024-01-13_00-03-07.csv
+Gameinformer,https://www.gameinformer.com/2023/12/19/game-informers-top-10-games-of-2023,254,gameinformer - 2024-01-13_00-06-17.csv
+Gq,https://www.gq.com/story/the-fifteen-best-video-games-of-2023,342,gq - 2024-01-13_00-08-58.csv
+Denofgeek,https://www.denofgeek.com/games/best-games-of-2023/,171,denofgeek - 2024-01-13_00-13-32.csv
+Gamerant,https://gamerant.com/top-best-video-game-2023/,218,gamerant - 2024-01-13_00-15-00.csv
+Rgj,https://www.rgj.com/story/life/2023/12/29/the-best-video-games-of-2023-game-of-the-year-goty-and-top-30-technobubble-gaming/72059796007/,375,rgj - 2024-01-24_23-27-58.csv
+Digitalspy,https://www.digitalspy.com/tech/g46154192/best-games-of-2023/,223,digitalspy - 2024-01-24_23-31-32.csv

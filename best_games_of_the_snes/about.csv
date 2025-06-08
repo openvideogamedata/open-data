@@ -1,2 +1,3 @@
-Title,Year,Tags,SourceURL
-Best Games of the SNES,,"console, nintendo",https://www.nintendolife.com/guides/50-best-super-nintendo-snes-games-of-all-time
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+IGN,https://www.ign.com/lists/top-100-snes-games,94,ign - 2023-04-19_20-00-07.csv
+Nintendo Life,https://www.nintendolife.com/guides/50-best-super-nintendo-snes-games-of-all-time,130,nintendo life - 2023-05-11_20-44-05.csv

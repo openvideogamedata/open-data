@@ -1,2 +1,6 @@
-Title,Year,Tags,SourceURL
-Best Games of the NES,,"console, nintendo",https://www.nintendolife.com/guides/50-best-nes-games-of-all-time
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+IGN,https://www.ign.com/lists/top-100-nes-games,94,ign - 2023-04-19_19-37-29.csv
+Retrododo,https://retrododo.com/best-nes-games/,157,retrododo - 2023-05-11_20-44-08.csv
+Denofgeek,https://www.denofgeek.com/games/best-nes-games-all-time-ever/,171,denofgeek - 2023-05-27_03-07-27.csv
+Retro-sanctuary,https://retro-sanctuary.com/Top-100-NES-Games-Page-1.html,159,retro-sanctuary - 2023-08-29_12-58-41.csv
+Nintendo Life,https://www.nintendolife.com/guides/50-best-nes-games-of-all-time,130,nintendo life - 2023-08-29_13-00-37.csv

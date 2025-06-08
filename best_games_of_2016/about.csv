@@ -1,2 +1,4 @@
-Title,Year,Tags,SourceURL
-Best Games of 2016,2016,year,https://gamerant.com/top-games-2016/#overwatch
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Eurogamer,https://www.eurogamer.net/eurogamer-readers-top-50-games-of-2016,146,eurogamer - 2023-06-16_01-10-55.csv
+Slantmagazine,https://www.slantmagazine.com/games/the-25-best-video-games-of-2016/,153,slantmagazine - 2023-06-16_01-14-25.csv
+Gamerant,https://gamerant.com/top-games-2016/#overwatch,218,gamerant - 2023-06-16_01-15-35.csv

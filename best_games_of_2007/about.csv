@@ -1,2 +1,3 @@
-Title,Year,Tags,SourceURL
-Best Games of 2007,2007,year,https://www.thetoptens.com/games/top-video-games-2007/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Eurogamer,https://www.eurogamer.net/eurogamer-readers-top-50-games-of-2007-article?page=5,146,eurogamer - 2023-06-14_14-02-46.csv
+Thetoptens,https://www.thetoptens.com/games/top-video-games-2007/,181,thetoptens - 2023-06-14_14-12-10.csv

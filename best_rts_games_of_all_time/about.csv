@@ -1,2 +1,20 @@
-Title,Year,Tags,SourceURL
-Best RTS Games of All Time,,"all time, genre",https://www.gamepro.com.au/games/best-rts-games/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+FTW USA Today,https://ftw.usatoday.com/lists/best-rts-games,182,ftw usa today - 2023-08-10_16-53-54.csv
+Metacritic,https://www.metacritic.com/browse/games/genre/metascore/real-time/all?view=detailed,141,metacritic - 2023-08-10_16-57-15.csv
+Gameranx,https://gameranx.com/features/id/11469/article/top-20-best-rts-of-all-time-click-click-die/,274,gameranx - 2023-08-10_17-17-04.csv
+Rockpapershotgun,https://www.rockpapershotgun.com/these-are-your-50-favourite-strategy-games-of-all-time,276,rockpapershotgun - 2023-08-10_17-19-27.csv
+Retrokingpin,https://www.retrokingpin.com/best-rts-games/,278,retrokingpin - 2023-08-10_17-23-03.csv
+Thetoptens,https://www.thetoptens.com/games/best-rts-games/,181,thetoptens - 2023-08-10_17-25-19.csv
+History-computer,https://history-computer.com/the-7-absolute-best-real-time-strategy-games-of-all-time/,253,history-computer - 2023-08-10_17-26-37.csv
+GamesRadar+,https://www.gamesradar.com/best-rts-games/,129,gamesradar+ - 2023-08-10_17-32-27.csv
+News AU,https://www.news.com.au/technology/gaming/the-best-realtime-strategy-games-of-all-time/news-story/1e4a4b8860fba117bb1efa794614be0a,198,news au - 2023-08-10_17-34-37.csv
+Chillopedia,https://chillopedia.com/20-best-real-time-strategy-games-of-all-time/,279,chillopedia - 2023-08-10_17-37-17.csv
+Levvvel,https://levvvel.com/best-rts-games/,280,levvvel - 2023-08-10_17-45-26.csv
+Highgroundgaming,https://www.highgroundgaming.com/best-rts-games/,263,highgroundgaming - 2023-08-10_17-48-14.csv
+Gaming,https://www.gaming.net/best-rts-games-in-2023/,281,gaming - 2023-08-10_17-49-55.csv
+CBR,https://www.cbr.com/best-real-time-strategy-games-ranked/,179,cbr - 2023-08-10_17-52-47.csv
+Mobipicker,https://www.mobipicker.com/best-real-time-strategy-games/,282,mobipicker - 2023-08-10_17-55-10.csv
+Ordinarygaming,https://www.ordinarygaming.com/best-rts-games/,283,ordinarygaming - 2023-08-10_18-15-08.csv
+Nme,https://www.nme.com/en_au/features/gaming-features/best-strategy-games-3211078,154,nme - 2023-08-10_18-33-35.csv
+Thegamer,https://www.thegamer.com/real-time-strategy-rts-games-best-story/,193,thegamer - 2023-08-10_18-55-48.csv
+Gamepro,https://www.gamepro.com.au/games/best-rts-games/,284,gamepro - 2023-08-11_01-09-34.csv

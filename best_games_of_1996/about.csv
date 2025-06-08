@@ -1,2 +1,7 @@
-Title,Year,Tags,SourceURL
-Best Games of 1996,1996,year,https://jogoveio.com.br/10-melhores-jogos-lancados-em-1996/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Nintendo Blast,https://www.nintendoblast.com.br/2021/05/1996-ano-importante-games-top-1.html,228,nintendo blast - 2023-06-15_18-11-36.csv
+IMDb,"https://www.imdb.com/search/title/?title_type=video_game&release_date=1996-01-01,1996-12-31",222,imdb - 2023-06-15_18-14-59.csv
+Metacritic,https://www.metacritic.com/browse/games/score/metascore/year/all/filtered?year_selected=1996,141,metacritic - 2023-06-24_18-24-56.csv
+Retro Refurbs,https://www.retrorefurbs.com/the-top-10-biggest-games-of-1996/,243,retro refurbs - 2023-06-24_18-24-57.csv
+Krusher Blog,https://blog.krusher.net/2016/12/los-mejores-juegos-de-1996/,244,krusher blog - 2023-06-24_18-29-27.csv
+Jogoveio,https://jogoveio.com.br/10-melhores-jogos-lancados-em-1996/,245,jogoveio - 2023-06-24_18-31-19.csv

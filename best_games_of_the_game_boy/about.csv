@@ -1,2 +1,6 @@
-Title,Year,Tags,SourceURL
-Best Games of The Game Boy,,"all time, console, nintendo, handheld",https://www.gamesradar.com/best-game-boy-games-all-time/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Nintendo Life,https://www.nintendolife.com/guides/50-best-game-boy-games-of-all-time,130,nintendo life - 2023-08-07_20-01-25.csv
+IGN,https://www.ign.com/articles/best-game-boy-games,94,ign - 2023-08-08_02-00-15.csv
+Retrododo,https://retrododo.com/best-gameboy-games/,157,retrododo - 2023-08-08_02-00-16.csv
+CBR,https://www.cbr.com/best-original-game-boy-games/,179,cbr - 2023-08-08_02-02-04.csv
+GamesRadar+,https://www.gamesradar.com/best-game-boy-games-all-time/,129,gamesradar+ - 2023-08-08_02-03-59.csv

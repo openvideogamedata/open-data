@@ -1,2 +1,6 @@
-Title,Year,Tags,SourceURL
-Best Games of the PSP,,"all time, console, playstation, handheld",https://culturedvultures.com/best-psp-games/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+GamesRadar+,https://www.gamesradar.com/best-psp-games/,129,gamesradar+ - 2023-08-07_20-16-02.csv
+IGN,https://www.ign.com/articles/the-10-best-psp-games,94,ign - 2023-08-08_02-39-31.csv
+Retrododo,https://retrododo.com/best-psp-games/,157,retrododo - 2023-08-08_02-43-21.csv
+Gaming Gorilla,https://gaminggorilla.com/best-psp-games/,156,gaming gorilla - 2023-08-08_14-45-19.csv
+Culturedvultures,https://culturedvultures.com/best-psp-games/,158,culturedvultures - 2023-08-08_14-49-10.csv

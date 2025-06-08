@@ -1,2 +1,4 @@
-Title,Year,Tags,SourceURL
-Best Games of 2013,2013,year,https://techraptor.net/gaming/features/best-games-of-2013
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Slantmagazine,https://www.slantmagazine.com/games/the-25-best-video-games-of-2013/,153,slantmagazine - 2023-06-13_02-47-10.csv
+GamesRadar+,https://www.gamesradar.com/best-games-2013/,129,gamesradar+ - 2023-07-01_14-07-30.csv
+Techraptor,https://techraptor.net/gaming/features/best-games-of-2013,225,techraptor - 2023-07-01_14-07-32.csv

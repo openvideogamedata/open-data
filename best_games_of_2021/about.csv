@@ -1,2 +1,12 @@
-Title,Year,Tags,SourceURL
-Best Games of 2021,2021,year,https://entertainment.ie/gaming/best-games-of-2021-502077/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+GamesRadar+,https://www.gamesradar.com/best-games-2021/,129,gamesradar+ - 2023-06-13_02-26-29.csv
+Denofgeek,https://www.denofgeek.com/games/the-best-games-of-2021/,171,denofgeek - 2023-06-13_02-26-30.csv
+Polygon,https://www.polygon.com/c/22796149/50-best-video-games-of-2021-polygon-goty,133,polygon - 2023-08-08_18-09-17.csv
+Time,https://time.com/6126797/best-video-games-2021/,132,time - 2023-08-08_18-14-09.csv
+The Guardian,https://www.theguardian.com/culture/2021/dec/23/the-15-best-video-games-of-2021,145,the guardian - 2023-08-08_18-16-56.csv
+Eurogamer,https://www.eurogamer.net/eurogamer-readers-top-50-games-of-2021,146,eurogamer - 2023-08-08_18-19-22.csv
+Esquire,https://www.esquire.com/lifestyle/g35429823/best-video-games-2021/,134,esquire - 2023-08-08_18-21-30.csv
+Nme,https://www.nme.com/features/nme-best-games-of-the-year-2021-3111730,154,nme - 2023-08-08_18-51-43.csv
+Slantmagazine,https://www.slantmagazine.com/games/the-25-best-video-games-of-2021/,153,slantmagazine - 2023-08-08_18-54-03.csv
+Empireonline,https://www.empireonline.com/gaming/features/best-games-2021/,246,empireonline - 2023-08-08_18-56-02.csv
+Entertainment,https://entertainment.ie/gaming/best-games-of-2021-502077/,149,entertainment - 2023-09-19_13-32-29.csv

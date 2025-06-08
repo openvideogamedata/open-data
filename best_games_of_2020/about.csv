@@ -1,2 +1,4 @@
-Title,Year,Tags,SourceURL
-Best Games of 2020,2020,year,https://www.gamesradar.com/best-games-2020/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Polygon,https://www.polygon.com/2020/12/14/22166004/best-games-2020-ps4-xbox-one-switch-pc-series-x,133,polygon - 2023-06-14_01-43-45.csv
+Empireonline,https://www.empireonline.com/gaming/features/best-video-games-2020/,246,empireonline - 2023-06-28_00-35-04.csv
+GamesRadar+,https://www.gamesradar.com/best-games-2020/,129,gamesradar+ - 2023-06-28_00-35-05.csv

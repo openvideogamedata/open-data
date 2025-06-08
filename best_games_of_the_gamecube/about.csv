@@ -1,2 +1,12 @@
-Title,Year,Tags,SourceURL
-Best Games of the GameCube,,"console, nintendo",https://www.metacritic.com/browse/games/score/metascore/all/gamecube/filtered
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Nintendo Life,https://www.nintendolife.com/guides/50-best-gamecube-games-of-all-time,130,nintendo life - 2023-04-19_19-24-39.csv
+IGN,https://www.ign.com/articles/the-best-gamecube-games-of-all-time,94,ign - 2023-06-22_18-01-16.csv
+CBR,https://www.cbr.com/nintendo-greatest-gamecube-games-ranked/#the-legend-of-zelda-twilight-princess,179,cbr - 2023-06-22_18-01-17.csv
+Retrododo,https://retrododo.com/best-gamecube-games/,157,retrododo - 2023-08-08_19-40-47.csv
+Gaming Gorilla,https://gaminggorilla.com/best-gamecube-games/,156,gaming gorilla - 2023-08-08_21-14-35.csv
+GamesRadar+,https://www.gamesradar.com/best-gamecube-games/,129,gamesradar+ - 2023-08-09_14-10-00.csv
+CNET,https://www.cnet.com/culture/entertainment/the-20-best-nintendo-gamecube-games-ranked/,31,cnet - 2023-08-09_14-11-24.csv
+Retro-sanctuary,https://retro-sanctuary.com/Top-100-Gamecube-Games-Page-1.html,159,retro-sanctuary - 2023-08-09_14-13-36.csv
+Culturedvultures,https://culturedvultures.com/best-gamecube-games/,158,culturedvultures - 2023-08-09_14-16-41.csv
+Watchmojo,https://www.watchmojo.com/articles/top-20-gamecube-games-of-all-time,241,watchmojo - 2023-08-09_14-17-42.csv
+Metacritic,https://www.metacritic.com/browse/games/score/metascore/all/gamecube/filtered,141,metacritic - 2023-08-09_14-18-36.csv

@@ -1,2 +1,4 @@
-Title,Year,Tags,SourceURL
-Best Games of 2003,2003,year,https://www.cbr.com/best-nostalgic-2003-video-games/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Player,https://player.me/best-games-of-2003/,220,player - 2023-06-14_13-06-02.csv
+IGN,https://www.ign.com/wikis/best-of-the-decade/2003_-_Games,94,ign - 2023-07-03_12-58-46.csv
+CBR,https://www.cbr.com/best-nostalgic-2003-video-games/,179,cbr - 2023-07-03_12-58-47.csv

@@ -1,2 +1,3 @@
-Title,Year,Tags,SourceURL
-Best Games of 2019,2019,year,https://www.polygon.com/best-games/2019/12/13/21002670/best-games-2019-ps4-pc-xbox-one-nintendo-switch-ios
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+GamesRadar+,https://www.gamesradar.com/best-games-2019/,129,gamesradar+ - 2023-06-13_02-41-20.csv
+Polygon,https://www.polygon.com/best-games/2019/12/13/21002670/best-games-2019-ps4-pc-xbox-one-nintendo-switch-ios,133,polygon - 2023-06-13_02-41-21.csv

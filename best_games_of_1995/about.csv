@@ -1,2 +1,8 @@
-Title,Year,Tags,SourceURL
-Best Games of 1995,1995,year,https://notadogame.com/ranking/games/1995
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Trettleman,https://trettleman.medium.com/the-9-best-games-of-the-year-1995-c8a0400115c8,226,trettleman - 2023-06-15_18-06-10.csv
+Videochums,https://videochums.com/top10/games-of-1995,227,videochums - 2023-06-15_18-07-17.csv
+Mediavida,https://www.mediavida.com/foro/juegos/top-mejores-juegos-ano-1995-395271,230,mediavida - 2023-06-16_01-32-44.csv
+IMDb,"https://www.imdb.com/search/title/?title_type=video_game&year=1995-01-01,1995-12-31&sort=user_rating,desc",222,imdb - 2023-06-20_13-25-50.csv
+Wikipedia (en),https://en.wikipedia.org/wiki/1995_in_video_games#Famitsu_Platinum_Hall_of_Fame,140,wikipedia (en) - 2023-09-26_22-42-24.csv
+Gamefaqs,https://gamefaqs.gamespot.com/top10/616-the-top-10-games-of-1995,300,gamefaqs - 2023-09-26_22-42-25.csv
+Notadogame,https://notadogame.com/ranking/games/1995,301,notadogame - 2023-09-26_22-42-31.csv

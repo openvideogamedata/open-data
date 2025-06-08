@@ -1,2 +1,5 @@
-Title,Year,Tags,SourceURL
-Best Games of the Nintendo 64,,"console, nintendo",https://www.ign.com/articles/best-n64-games
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Metacritic,https://www.metacritic.com/browse/games/score/metascore/all/n64/filtered,141,metacritic - 2023-03-29_23-36-21.csv
+GamesRadar+,https://www.gamesradar.com/best-n64-games-all-time/,129,gamesradar+ - 2023-03-30_02-24-20.csv
+Nintendo Life,https://www.nintendolife.com/guides/50-best-nintendo-64-games-of-all-time,130,nintendo life - 2023-03-30_02-24-21.csv
+IGN,https://www.ign.com/articles/best-n64-games,94,ign - 2023-03-30_02-24-21.csv

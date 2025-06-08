@@ -1,2 +1,3 @@
-Title,Year,Tags,SourceURL
-Best Games of the Xbox,,"console, xbox",https://www.dualshockers.com/best-original-xbox-games-ranked/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+IGN,https://www.ign.com/articles/the-25-best-original-xbox-games-of-all-time,94,ign - 2023-05-29_16-09-28.csv
+Dualshockers,https://www.dualshockers.com/best-original-xbox-games-ranked/,180,dualshockers - 2023-07-31_01-22-33.csv

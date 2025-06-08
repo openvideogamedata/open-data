@@ -1,2 +1,4 @@
-Title,Year,Tags,SourceURL
-Best Games of 1997,1997,year,https://www.imdb.com/list/ls081539752/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Listytop,https://listytop.com/list-of-1997-games/,217,listytop - 2023-06-13_19-21-35.csv
+Gamesense,https://gamesense.co/games/census/1997/,247,gamesense - 2023-06-28_00-51-37.csv
+IMDb,https://www.imdb.com/list/ls081539752/,222,imdb - 2023-06-28_00-51-38.csv

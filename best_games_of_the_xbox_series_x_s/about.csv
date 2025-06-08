@@ -1,2 +1,9 @@
-Title,Year,Tags,SourceURL
-Best Games of the Xbox Series X/S,,"console, xbox",https://www.theshortcut.com/p/best-xbox-series-x-games
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+IGN,https://www.ign.com/articles/best-xbox-series-x-games,94,ign - 2023-04-03_20-57-14.csv
+GamesRadar+,https://www.gamesradar.com/best-xbox-series-x-games/,129,gamesradar+ - 2023-05-20_15-29-27.csv
+Tom's Guide,https://www.tomsguide.com/best-picks/best-xbox-series-x-games,102,tom's guide - 2023-05-20_15-32-07.csv
+Screenrant,https://screenrant.com/best-xbox-series-x-games/,205,screenrant - 2023-05-20_15-37-26.csv
+Paste Magazine,https://www.pastemagazine.com/games/xbox/best-xbox-series-xs-games,127,paste magazine - 2023-05-20_15-40-55.csv
+Gaming Gorilla,https://gaminggorilla.com/best-xbox-series-x-exclusive-games/,156,gaming gorilla - 2023-05-20_15-47-05.csv
+Theloadout,https://www.theloadout.com/best-xbox-series-x-games,204,theloadout - 2023-05-20_15-50-40.csv
+Theshortcut,https://www.theshortcut.com/p/best-xbox-series-x-games,206,theshortcut - 2023-05-20_15-52-49.csv

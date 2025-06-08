@@ -1,2 +1,4 @@
-Title,Year,Tags,SourceURL
-Best Games of 2001,2001,year,https://gamingbolt.com/15-best-games-of-2001
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+Thegamer,https://www.thegamer.com/2001-great-games/,193,thegamer - 2023-06-14_12-53-05.csv
+IMDb,https://m.imdb.com/list/ls069398904/,248,imdb - 2023-07-04_17-49-51.csv
+Gamingbolt,https://gamingbolt.com/15-best-games-of-2001,189,gamingbolt - 2023-07-04_18-05-00.csv

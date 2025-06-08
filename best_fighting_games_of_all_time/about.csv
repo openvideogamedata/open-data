@@ -1,2 +1,6 @@
-Title,Year,Tags,SourceURL
-Best Fighting Games of All Time,,"all time, genre",https://gaminggorilla.com/best-fighting-games/
+SourceName,SourceURL,SourceId,GeneratedCsvPath
+IGN,https://www.ign.com/articles/the-10-best-fighting-games,94,ign - 2023-05-30_12-38-44.csv
+GamesRadar+,https://www.gamesradar.com/best-fighting-games/,129,gamesradar+ - 2023-05-30_12-41-32.csv
+Metacritic,https://www.metacritic.com/browse/games/genre/metascore/fighting/all?view=detailed,141,metacritic - 2023-05-30_13-05-01.csv
+One37pm,https://www.one37pm.com/gaming/best-fighting-games-of-all-time,172,one37pm - 2023-05-30_13-08-04.csv
+Gaming Gorilla,https://gaminggorilla.com/best-fighting-games/,156,gaming gorilla - 2023-05-30_13-10-22.csv
