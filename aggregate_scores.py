@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # Folder containing the CSV lists to aggregate. Update this path as needed.
-DATA_FOLDER = "best_games_of_1995"
+DATA_FOLDER = "best_games_of_all_time"
 
 # Collect all ranking CSV files (skip 'about.csv')
 frames = []
