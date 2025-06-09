@@ -34,73 +34,73 @@ Position,Title,TotalScore,ListsAppeared
 33,GoldenEye 007 (1997),25,3
 34,Wii Sports (2006),24,3
 35,Batman: Arkham City (2011),24,3
-36,Dark Souls (2011),23,3
-37,World of Warcraft (2004),23,3
+36,World of Warcraft (2004),23,3
+37,Dark Souls (2011),23,3
 38,Pokémon HeartGold (2009),22,3
 39,Red Dead Redemption (2010),22,3
 40,Super Mario Galaxy 2 (2010),21,2
-41,Final Fantasy VI (1994),21,3
-42,Ms. Pac-Man (1982),21,2
+41,Ms. Pac-Man (1982),21,2
+42,Final Fantasy VI (1994),21,3
 43,Bloodborne (2015),19,3
-44,Disco Elysium (2019),18,4
-45,Pac-Man (1980),18,2
+44,Pac-Man (1980),18,2
+45,Disco Elysium (2019),18,4
 46,Pokémon FireRed (2004),17,2
 47,Pokémon Red Version (1996),16,2
-48,The Legend of Zelda: Majora's Mask (2000),15,1
-49,Hades (2019),15,3
-50,The Last of Us Part II (2020),15,1
-51,Baldur's Gate 3 (2020),14,1
-52,Tony Hawk's Pro Skater 2 (2000),14,1
+48,Hades (2019),15,3
+49,The Last of Us Part II (2020),15,1
+50,The Legend of Zelda: Majora's Mask (2000),15,1
+51,Tony Hawk's Pro Skater 2 (2000),14,1
+52,Baldur's Gate 3 (2020),14,1
 53,Grand Theft Auto III (2001),13,3
-54,The Legend of Zelda (1986),13,1
+54,Metroid Prime (2002),13,3
 55,Persona 5 Royal (2019),13,2
-56,Metroid Prime (2002),13,3
+56,The Legend of Zelda (1986),13,1
 57,Resident Evil 2 (1998),12,3
 58,The Last of Us Part I (2022),12,1
 59,Metal Gear Solid 2: Sons of Liberty (2001),12,2
 60,SoulCalibur (1998),12,1
 61,The Legend of Zelda: Tears of the Kingdom (2023),12,1
 62,Persona 5 (2016),11,2
-63,Super Smash Bros. Ultimate (2018),11,1
-64,Super Mario Galaxy (2007),11,1
-65,Mother 3 (2006),11,1
-66,Metal Gear Solid 3: Subsistence (2005),10,1
-67,Sonic the Hedgehog 2 (1992),10,1
-68,Teenage Mutant Ninja Turtles: Turtles in Time (1991),10,1
-69,Street Fighter II: The World Warrior (1991),10,1
-70,Silent Hill 2 (2001),10,2
+63,Super Mario Galaxy (2007),11,1
+64,Mother 3 (2006),11,1
+65,Super Smash Bros. Ultimate (2018),11,1
+66,Teenage Mutant Ninja Turtles: Turtles in Time (1991),10,1
+67,Street Fighter II: The World Warrior (1991),10,1
+68,Silent Hill 2 (2001),10,2
+69,Metal Gear Solid 3: Subsistence (2005),10,1
+70,Sonic the Hedgehog 2 (1992),10,1
 71,Tony Hawk's Pro Skater 3 (2001),9,2
-72,The Last of Us Remastered (2014),8,1
-73,God of War Ragnarök (2022),8,1
-74,Pokémon Blue (1996),8,1
-75,NieR: Automata (2017),7,1
-76,Disco Elysium: The Final Cut (2021),7,1
+72,God of War Ragnarök (2022),8,1
+73,Pokémon Blue (1996),8,1
+74,The Last of Us Remastered (2014),8,1
+75,Disco Elysium: The Final Cut (2021),7,1
+76,NieR: Automata (2017),7,1
 77,Mortal Kombat (1993),6,1
 78,Metroid Prime Remastered (2023),6,2
 79,Grand Theft Auto: San Andreas (2004),6,1
 80,Suikoden II (1998),6,1
 81,Super Mario Kart (1992),5,1
 82,ADOM: Ancient Domains of Mystery (2015),5,1
-83,Persona 4 Golden (2012),4,1
-84,Mass Effect Legendary Edition (2021),4,1
-85,Perfect Dark (2000),4,1
-86,Divinity: Original Sin II (2017),3,1
+83,Mass Effect Legendary Edition (2021),4,1
+84,Perfect Dark (2000),4,1
+85,Persona 4 Golden (2012),4,1
+86,Overwatch (2016),3,1
 87,Celeste (2018),3,2
-88,StarCraft (1998),3,1
-89,Mike Tyson's Punch-Out!! (1987),3,1
-90,Overwatch (2016),3,1
-91,Uncharted 2: Among Thieves (2009),3,1
-92,Portal (2007),2,1
-93,Shovel Knight (2014),2,1
-94,Super Smash Bros. Melee (2001),2,1
-95,Dead Space (2023),2,1
-96,Journey (2012),2,1
-97,Call of Duty 4: Modern Warfare (2007),1,1
-98,Halo 2 (2004),1,1
+88,Mike Tyson's Punch-Out!! (1987),3,1
+89,Uncharted 2: Among Thieves (2009),3,1
+90,Divinity: Original Sin II (2017),3,1
+91,StarCraft (1998),3,1
+92,Shovel Knight (2014),2,1
+93,Portal (2007),2,1
+94,Dead Space (2023),2,1
+95,Journey (2012),2,1
+96,Super Smash Bros. Melee (2001),2,1
+97,EarthBound (1994),1,1
+98,Dark Souls III (2016),1,1
 99,It Takes Two (2021),1,1
-100,Dark Souls III (2016),1,1
-101,EarthBound (1994),1,1
-102,Assassin's Creed II (2009),1,1
-103,Planescape: Torment (1999),1,1
+100,Call of Duty 4: Modern Warfare (2007),1,1
+101,Assassin's Creed II (2009),1,1
+102,Halo 2 (2004),1,1
+103,Undertale (2015),1,1
 104,SimCity (1989),1,1
-105,Undertale (2015),1,1
+105,Planescape: Torment (1999),1,1
