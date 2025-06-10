@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -16,18 +17,37 @@ namespace OpenData.Console.Lists.best_games_of_all_time.IGN.SCripts
     public class IGNScraper
     {
         private readonly string _url = "https://www.ign.com/articles/the-best-100-video-games-of-all-time";
+        private readonly HttpClient _client;
+        private readonly Random _random = new();
 
-        public IGNScraper() { }
+        public IGNScraper()
+        {
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            _client = new HttpClient(handler)
+            {
+                Timeout = TimeSpan.FromSeconds(30)
+            };
+
+            _client.DefaultRequestHeaders.UserAgent.ParseAdd(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36");
+            _client.DefaultRequestHeaders.Accept.ParseAdd("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+            _client.DefaultRequestHeaders.AcceptLanguage.ParseAdd("en-US,en;q=0.9");
+        }
 
         public async Task<List<GameEntry>> GetDataAsync()
         {
             var results = new List<GameEntry>();
-            using var client = new HttpClient();
 
             string? nextUrl = _url;
             while (!string.IsNullOrEmpty(nextUrl))
             {
-                var html = await client.GetStringAsync(nextUrl);
+                using var response = await _client.GetAsync(nextUrl);
+                response.EnsureSuccessStatusCode();
+                var html = await response.Content.ReadAsStringAsync();
 
                 // Extract entries in the form "<h2>1. Game Title</h2>"
                 foreach (Match m in Regex.Matches(html, "<h2[^>]*>(.*?)</h2>", RegexOptions.Singleline | RegexOptions.IgnoreCase))
@@ -59,6 +79,12 @@ namespace OpenData.Console.Lists.best_games_of_all_time.IGN.SCripts
                 else
                 {
                     nextUrl = null;
+                }
+
+                if (nextUrl != null)
+                {
+                    var delayMs = _random.Next(1000, 3000);
+                    await Task.Delay(delayMs);
                 }
             }
 
