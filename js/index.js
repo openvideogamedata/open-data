@@ -30,12 +30,22 @@ async function fetchDirectoryListing(path) {
 }
 
 async function fetchManifestFallback(path) {
-  const url = path.replace(/\/$/, '') + '/_manifest.json';
-  const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
-  if (!res.ok) throw new Error('Manifesto não encontrado');
-  const json = await res.json();
-  if (!Array.isArray(json?.lists)) throw new Error('Manifesto inválido');
-  return json.lists;
+  const base = path.replace(/\/$/, '');
+  const candidates = ['/_manifest.json', '/manifest.json'];
+  let lastErr = null;
+  for (const suffix of candidates) {
+    try {
+      const url = base + suffix;
+      const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+      if (!res.ok) { lastErr = new Error(`HTTP ${res.status}`); continue; }
+      const json = await res.json();
+      if (!Array.isArray(json?.lists)) { lastErr = new Error('Manifesto inválido'); continue; }
+      return json.lists;
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  throw lastErr || new Error('Manifesto não encontrado');
 }
 
 async function loadLists() {
@@ -76,11 +86,10 @@ async function loadLists() {
   } catch (err) {
     console.error(err);
     const msg = 'Não foi possível carregar as listas. ' +
-      'Execute um servidor com índice de diretórios (ex.: "python -m http.server") ' +
-      'ou gere um manifesto em list/_manifest.json.';
+      'Em hospedagens estáticas (GitHub Pages), adicione ".nojekyll" na raiz e ' +
+      'gere um manifesto em list/_manifest.json (ou list/manifest.json).';
     document.getElementById('status').textContent = msg;
   }
 }
 
 loadLists();
-
