@@ -8,14 +8,21 @@
   </head>
   <body>
     <header class="site-header">
-      <h1>Listas de Jogos</h1>
+      <h1>Open Video Game Data</h1>
       <p class="subtitle">Escolha uma lista para ver o CSV agregado</p>
     </header>
 
     <main class="container">
+      <section class="controls">
+        <div class="search-bar">
+          <input id="search" type="search" placeholder="Buscar listas..." autocomplete="off" />
+        </div>
+        <div id="summary" class="summary" aria-live="polite"></div>
+      </section>
+
       <section>
         <div id="status" class="status">Carregando listas...</div>
-        <ul id="lists" class="list-grid" aria-live="polite"></ul>
+        <div id="groups" class="groups" aria-live="polite"></div>
       </section>
     </main>
 
@@ -26,4 +33,3 @@
     <script src="js/index.js" type="module"></script>
   </body>
   </html>
-
