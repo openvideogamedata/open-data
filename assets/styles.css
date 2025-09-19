@@ -1,0 +1,63 @@
+/* Básico e limpo, sem frameworks */
+:root {
+  --bg: #0c0d10;
+  --panel: #14161b;
+  --text: #e7e9ee;
+  --muted: #a9aebb;
+  --accent: #6ea8fe;
+  --border: #242833;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: linear-gradient(180deg, var(--bg), #0f1116 30%);
+  color: var(--text);
+}
+
+.site-header {
+  padding: 32px 16px 8px;
+  text-align: center;
+}
+.site-header h1 { margin: 0 0 6px; font-size: 28px; }
+.site-header .subtitle { margin: 0; color: var(--muted); }
+.back-link { text-align: center; margin-top: 6px; }
+.back-link a { color: var(--accent); text-decoration: none; }
+.back-link a:hover { text-decoration: underline; }
+
+.container { max-width: 1000px; margin: 0 auto; padding: 16px; }
+
+.status { color: var(--muted); margin: 16px 0; }
+
+.list-grid {
+  list-style: none;
+  padding: 0; margin: 16px 0;
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.list-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  transition: transform .08s ease-out, border-color .12s ease-out;
+}
+.list-item a {
+  display: block; color: var(--text); text-decoration: none;
+  font-weight: 600;
+}
+.list-item small { display: block; color: var(--muted); margin-top: 4px; }
+.list-item:hover { transform: translateY(-1px); border-color: #2e3442; }
+
+.table-wrap { overflow: auto; border-radius: 10px; border: 1px solid var(--border); background: var(--panel); }
+.data-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.data-table thead th { position: sticky; top: 0; background: #171a20; }
+.data-table th, .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+.data-table tbody tr:hover { background: #151821; }
+
+.site-footer { text-align: center; padding: 24px 16px 40px; color: var(--muted); }
+.site-footer code { color: var(--muted); }
+

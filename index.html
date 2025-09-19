@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open Data – Listas</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Listas de Jogos</h1>
+      <p class="subtitle">Escolha uma lista para ver o CSV agregado</p>
+    </header>
+
+    <main class="container">
+      <section>
+        <div id="status" class="status">Carregando listas...</div>
+        <ul id="lists" class="list-grid" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>Gerado dinamicamente a partir da pasta <code>list/</code></small>
+    </footer>
+
+    <script src="js/index.js" type="module"></script>
+  </body>
+  </html>
+
