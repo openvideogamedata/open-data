@@ -62,14 +62,17 @@ async function fetchManifestFallback(path) {
 async function loadLists() {
   const status = document.getElementById('status');
   const groupsEl = document.getElementById('groups');
+  const listEl = document.getElementById('lists');
   const summaryEl = document.getElementById('summary');
   const searchEl = document.getElementById('search');
   try {
     let names = [];
+    // GitHub Pages não lista diretórios; tente primeiro o manifesto
     try {
-      names = await fetchDirectoryListing('list/');
-    } catch (_) {
       names = await fetchManifestFallback('list/');
+    } catch (_) {
+      // Em dev local, diretório pode estar disponível
+      names = await fetchDirectoryListing('list/');
     }
 
     if (!names.length) throw new Error('Nenhuma lista encontrada');
@@ -77,55 +80,66 @@ async function loadLists() {
     status.textContent = '';
     summaryEl.textContent = `Encontradas ${names.length} listas`;
 
-    const order = ['Geral', 'Gêneros', 'Plataformas', 'Anuais', 'Anticipados', 'Outros'];
-    const groups = new Map(order.map(k => [k, []]));
-    names.sort((a,b) => a.localeCompare(b)).forEach(name => {
-      const cat = categorize(name);
-      if (!groups.has(cat)) groups.set(cat, []);
-      groups.get(cat).push(name);
-    });
-
+    // Se existir contêiner de grupos, renderiza categorias; senão, renderiza lista única
     const frag = document.createDocumentFragment();
-    for (const [cat, items] of groups.entries()) {
-      if (!items.length) continue;
-      const section = document.createElement('section');
-      section.className = 'group';
-      section.dataset.group = cat;
-
-      const h2 = document.createElement('h2');
-      h2.className = 'group-title';
-      h2.textContent = cat + ' ';
-      const smallCount = document.createElement('small');
-      smallCount.textContent = `(${items.length})`;
-      h2.appendChild(smallCount);
-
-      const ul = document.createElement('ul');
-      ul.className = 'list-grid group-grid';
-
-      items.forEach(name => {
+    if (groupsEl) {
+      const order = ['Geral', 'Gêneros', 'Plataformas', 'Anuais', 'Anticipados', 'Outros'];
+      const groups = new Map(order.map(k => [k, []]));
+      names.sort((a,b) => a.localeCompare(b)).forEach(name => {
+        const cat = categorize(name);
+        if (!groups.has(cat)) groups.set(cat, []);
+        groups.get(cat).push(name);
+      });
+      for (const [cat, items] of groups.entries()) {
+        if (!items.length) continue;
+        const section = document.createElement('section');
+        section.className = 'group';
+        section.dataset.group = cat;
+        const h2 = document.createElement('h2');
+        h2.className = 'group-title';
+        h2.textContent = cat + ' ';
+        const smallCount = document.createElement('small');
+        smallCount.textContent = `(${items.length})`;
+        h2.appendChild(smallCount);
+        const ul = document.createElement('ul');
+        ul.className = 'list-grid group-grid';
+        items.forEach(name => {
+          const li = document.createElement('li');
+          li.className = 'list-item';
+          li.dataset.name = name.toLowerCase();
+          li.dataset.group = cat;
+          const a = document.createElement('a');
+          a.href = `list.html?name=${encodeURIComponent(name)}`;
+          a.innerHTML = `<span class="emoji">📂</span>${humanize(name)}`;
+          const small = document.createElement('small');
+          small.textContent = `list/${name}/aggregated-list.csv`;
+          li.appendChild(a);
+          li.appendChild(small);
+          ul.appendChild(li);
+        });
+        section.appendChild(h2);
+        section.appendChild(ul);
+        frag.appendChild(section);
+      }
+      groupsEl.innerHTML = '';
+      groupsEl.appendChild(frag);
+    } else if (listEl) {
+      names.sort((a,b) => a.localeCompare(b)).forEach(name => {
         const li = document.createElement('li');
         li.className = 'list-item';
         li.dataset.name = name.toLowerCase();
-        li.dataset.group = cat;
-
         const a = document.createElement('a');
         a.href = `list.html?name=${encodeURIComponent(name)}`;
         a.innerHTML = `<span class="emoji">📂</span>${humanize(name)}`;
-
         const small = document.createElement('small');
         small.textContent = `list/${name}/aggregated-list.csv`;
-
         li.appendChild(a);
         li.appendChild(small);
-        ul.appendChild(li);
+        frag.appendChild(li);
       });
-
-      section.appendChild(h2);
-      section.appendChild(ul);
-      frag.appendChild(section);
+      listEl.innerHTML = '';
+      listEl.appendChild(frag);
     }
-    groupsEl.innerHTML = '';
-    groupsEl.appendChild(frag);
 
     // Filtro de busca por texto e atualização de contadores por grupo
     if (searchEl) {
@@ -133,18 +147,22 @@ async function loadLists() {
       const doFilter = () => {
         const q = searchEl.value.trim().toLowerCase();
         let visible = 0;
-        groupsEl.querySelectorAll('.list-item').forEach(li => {
+        const scope = groupsEl || listEl;
+        if (!scope) return;
+        scope.querySelectorAll('.list-item').forEach(li => {
           const hit = !q || li.dataset.name.includes(q);
           li.style.display = hit ? '' : 'none';
           if (hit) visible++;
         });
-        groupsEl.querySelectorAll('.group').forEach(sec => {
-          const items = Array.from(sec.querySelectorAll('.list-item'));
-          const visibleInSec = items.filter(li => li.style.display !== 'none').length;
-          sec.style.display = visibleInSec ? '' : 'none';
-          const countEl = sec.querySelector('.group-title small');
-          if (countEl) countEl.textContent = `(${visibleInSec}/${items.length})`;
-        });
+        if (groupsEl) {
+          groupsEl.querySelectorAll('.group').forEach(sec => {
+            const items = Array.from(sec.querySelectorAll('.list-item'));
+            const visibleInSec = items.filter(li => li.style.display !== 'none').length;
+            sec.style.display = visibleInSec ? '' : 'none';
+            const countEl = sec.querySelector('.group-title small');
+            if (countEl) countEl.textContent = `(${visibleInSec}/${items.length})`;
+          });
+        }
         summaryEl.textContent = `${visible} de ${total} listas`;
       };
       searchEl.addEventListener('input', doFilter);
@@ -160,4 +178,3 @@ async function loadLists() {
 }
 
 loadLists();
-
