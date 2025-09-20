@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Open Data â€“ Listas</title>
-    <link rel="stylesheet" href="assets/styles.css" />
+    <title>Open Data – Listas</title>
+    <link rel="preload" href="assets/styles.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="assets/styles.css" /></noscript>
   </head>
   <body>
     <header class="site-header">
@@ -22,7 +23,16 @@
 
       <section>
         <div id="status" class="status">Carregando listas...</div>
-        <div id="groups" class="groups" aria-live="polite"></div>
+        <div id="groups" class="groups" aria-live="polite">
+          <section class="group skeleton-group" aria-hidden="true">
+            <h2 class="group-title"><span class="skeleton-bar"></span></h2>
+            <ul class="list-grid">
+              <li class="list-item skeleton-card"></li>
+              <li class="list-item skeleton-card"></li>
+              <li class="list-item skeleton-card"></li>
+            </ul>
+          </section>
+        </div>
       </section>
     </main>
 

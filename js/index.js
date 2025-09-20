@@ -123,6 +123,7 @@ async function loadLists() {
       }
       groupsEl.innerHTML = '';
       groupsEl.appendChild(frag);
+      groupsEl.classList.add('loaded');
     } else if (listEl) {
       names.sort((a,b) => a.localeCompare(b)).forEach(name => {
         const li = document.createElement('li');
@@ -173,8 +174,14 @@ async function loadLists() {
     const msg = 'Não foi possível carregar as listas. ' +
       'Em hospedagens estáticas (GitHub Pages), adicione ".nojekyll" na raiz e ' +
       'gere um manifesto em list/_manifest.json (ou list/manifest.json).';
+    if (groupsEl) {
+      groupsEl.classList.add('loaded');
+      groupsEl.innerHTML = '';
+    }
     document.getElementById('status').textContent = msg;
   }
 }
 
 loadLists();
+
+

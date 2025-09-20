@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Open Data – Lista</title>
-    <link rel="stylesheet" href="assets/styles.css" />
+    <title>Open Data � Lista</title>
+    <link rel="preload" href="assets/styles.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="assets/styles.css" /></noscript>
   </head>
   <body>
     <header class="site-header">
+      <nav class="back-link"><a href="./">&larr; Voltar</a></nav>
       <h1 id="page-title">Lista</h1>
-      <nav class="back-link"><a href="./">← Voltar</a></nav>
     </header>
 
     <main class="container">
@@ -30,5 +31,4 @@
 
     <script src="js/list.js" type="module"></script>
   </body>
-  </html>
-
+</html>
