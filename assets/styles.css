@@ -159,3 +159,48 @@ body {
 
 .site-footer { text-align: center; padding: 24px 16px 40px; color: var(--muted); }
 .site-footer code { color: var(--muted); }
+
+/* Game cards (list view) */
+#game-grid {
+  /* Narrower columns to better fit cover width */
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.list-item.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: unset; /* override generic min-height */
+  padding: 10px;
+}
+
+.game-card-cover {
+  width: 166px;
+  height: 224px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.game-card-cover.placeholder {
+  background: #1a1e26;
+  border: 1px dashed var(--border);
+}
+
+.game-card-title {
+  font-weight: 700;
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.4em; /* keep similar heights across cards */
+}
+
+.game-card-meta {
+  color: var(--muted);
+  font-size: 12px;
+}

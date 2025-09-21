@@ -1,4 +1,4 @@
-// Lê ?name=<pasta> e renderiza aggregated-list.csv como tabela
+// Render a list page as game cards with IGDB covers
 
 function getParam(name) {
   const p = new URLSearchParams(window.location.search);
@@ -13,7 +13,7 @@ function humanize(name) {
     .replace(/\b\w/g, c => c.toUpperCase());
 }
 
-// CSV parser simples com suporte a campos entre aspas
+// Basic CSV parser with quoted fields support
 function parseCSV(text) {
   const rows = [];
   let i = 0, field = '', row = [], inQuotes = false;
@@ -34,70 +34,178 @@ function parseCSV(text) {
       else { field += ch; }
     }
   }
-  // último campo/linha
   if (field.length || row.length) { row.push(field); rows.push(row); }
   return rows;
 }
 
-function renderTable(containerHead, containerBody, data) {
-  if (!data || !data.length) return;
-  const [header, ...rows] = data;
-  const trHead = document.createElement('tr');
-  header.forEach(h => {
-    const th = document.createElement('th');
-    th.textContent = h;
-    trHead.appendChild(th);
-  });
-  containerHead.innerHTML = '';
-  containerHead.appendChild(trHead);
+function rowsToObjects(rows) {
+  if (!rows || !rows.length) return [];
+  const [header, ...data] = rows;
+  return data.map(r => Object.fromEntries(header.map((h, i) => [h, r[i] ?? ''])));
+}
+
+function baseTitle(title) {
+  const m = /^(.*)\s+\((\d{4})\)$/.exec(title || '');
+  return (m ? m[1] : (title || '')).trim();
+}
+
+function buildCoverSrc(coverId) {
+  return `https://images.igdb.com/igdb/image/upload/t_cover_big/${coverId}.jpg`;
+}
+
+function renderCards(rootEl, aggregated, coverMap) {
+  let ul = document.getElementById('game-grid'); if (!ul) { ul = document.createElement('ul'); ul.id = 'game-grid'; ul.className = 'list-grid'; rootEl.appendChild(ul); } ul.innerHTML = '';
 
   const frag = document.createDocumentFragment();
-  rows.forEach(cols => {
+  aggregated.forEach(row => {
+    const li = document.createElement('li');
+    li.className = 'list-item game-card';
+
+    const title = row.Title || '';
+    const plainTitle = baseTitle(title);
+    const coverId = coverMap.get(plainTitle) || '';
+
+    if (coverId) {
+      const img = document.createElement('img');
+      img.className = 'game-card-cover';
+      img.src = buildCoverSrc(coverId);
+      img.alt = title;
+      img.title = title;
+      img.width = 166;
+      img.height = 224;
+      li.appendChild(img); } else { const ph = document.createElement('div'); ph.className = 'game-card-cover placeholder'; ph.setAttribute('aria-hidden','true'); ph.style.width='166px'; ph.style.height='224px'; li.appendChild(ph); }const titleEl = document.createElement('div'); titleEl.className = 'game-card-title'; titleEl.textContent = '#' + row.Position + ' \u2014 ' + title; li.appendChild(titleEl); const meta = document.createElement('small'); meta.className = 'game-card-meta'; meta.textContent = 'Score: ' + row.TotalScore + ' - Lists: ' + row.ListsAppeared; li.appendChild(meta);
+
+    frag.appendChild(li);
+  });
+
+  ul.appendChild(frag);
+}
+
+function renderTableFromObjects(thead, tbody, aggregated) {
+  thead.innerHTML = '';
+  tbody.innerHTML = '';
+  const header = ['Position', 'Title', 'TotalScore', 'ListsAppeared'];
+  const tr = document.createElement('tr');
+  header.forEach(h => { const th = document.createElement('th'); th.textContent = h; tr.appendChild(th); });
+  thead.appendChild(tr);
+  const frag = document.createDocumentFragment();
+  aggregated.forEach(row => {
     const tr = document.createElement('tr');
-    cols.forEach((c, idx) => {
+    [row.Position, row.Title, row.TotalScore, row.ListsAppeared].forEach((val, idx) => {
       const td = document.createElement('td');
-      td.textContent = c;
-      // alinhamento de números simples
-      if (/^\d+(?:[\.,]\d+)?$/.test(c)) td.style.textAlign = 'right';
+      td.textContent = String(val ?? '');
       if (idx === 0) td.style.fontWeight = '600';
+      if (idx === 0 || idx >= 2) td.style.textAlign = 'right';
       tr.appendChild(td);
     });
     frag.appendChild(tr);
   });
-  containerBody.innerHTML = '';
-  containerBody.appendChild(frag);
+  tbody.appendChild(frag);
 }
 
-async function loadCSV() {
+async function loadPage() {
   const name = getParam('name');
   const pageTitle = document.getElementById('page-title');
   const status = document.getElementById('status');
-  const table = document.getElementById('data-table');
+  const pathEl = document.getElementById('csv-path');
+  const tableWrap = document.getElementById('table-wrap');
+  const tableEl = document.getElementById('data-table');
   const thead = document.getElementById('table-head');
   const tbody = document.getElementById('table-body');
-  const pathEl = document.getElementById('csv-path');
+  const gridSection = document.querySelector('main section');
 
   if (!name) {
-    status.textContent = 'Parâmetro ?name= não informado.';
+    if (status) status.textContent = 'Parametro ?name= nao informado.';
     return;
   }
-  pageTitle.textContent = humanize(name);
+  if (pageTitle) pageTitle.textContent = humanize(name);
 
   const csvPath = `list/${encodeURIComponent(name)}/aggregated-list.csv`;
-  pathEl.textContent = csvPath;
+  if (pathEl) pathEl.textContent = csvPath;
   try {
     const res = await fetch(csvPath, { headers: { 'Accept': 'text/csv, */*' } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const text = await res.text();
-    const data = parseCSV(text);
-    renderTable(thead, tbody, data);
-    status.textContent = `${data.length - 1} itens`;
-    table.hidden = false;
+    const dataRows = parseCSV(text);
+    const aggregated = rowsToObjects(dataRows);
+
+    // Build title -> cover id map using latest source CSVs from about.csv
+    const coverMap = new Map();
+    try {
+      const aboutRes = await fetch(`list/${encodeURIComponent(name)}/about.csv`, { headers: { 'Accept': 'text/csv, */*' } });
+      if (aboutRes.ok) {
+        const aboutText = await aboutRes.text();
+        const aboutRows = rowsToObjects(parseCSV(aboutText));
+        const relPaths = aboutRows.map(r => r.GeneratedCsvPath).filter(Boolean);
+        await Promise.all(relPaths.map(async rel => {
+          try {
+            const parts = rel.split('/').map(encodeURIComponent).join('/');
+            const url = `list/${encodeURIComponent(name)}/${parts}`;
+            const r = await fetch(url, { headers: { 'Accept': 'text/csv, */*' } });
+            let okRes = r;
+            if (!r.ok) {
+              // Fallback: if rel looks like "Source - timestamp.csv" but file lives in a subfolder named after source
+              const dashIdx = rel.indexOf(' - ');
+              if (dashIdx > 0 && !rel.includes('/')) {
+                const srcFolder = rel.slice(0, dashIdx);
+                const url2 = `list/${encodeURIComponent(name)}/${encodeURIComponent(srcFolder)}/${encodeURIComponent(rel)}`;
+                const r2 = await fetch(url2, { headers: { 'Accept': 'text/csv, */*' } });
+                if (!r2.ok) return;
+                okRes = r2;
+              } else {
+                return;
+              }
+            }
+            const t = await okRes.text();
+            const rows = rowsToObjects(parseCSV(t));
+            rows.forEach(obj => {
+              const tTitle = (obj.Title || '').trim();
+              const cid = (obj.CoverImageId || '').trim();
+              if (tTitle && cid && !coverMap.has(tTitle)) {
+                coverMap.set(tTitle, cid);
+              }
+            });
+          } catch (_) { /* ignore */ }
+        }));
+      }
+    } catch (_) { /* ignore about.csv issues */ }
+
+    const section = gridSection || document.body;
+    // Render cards by default
+    renderCards(section, aggregated, coverMap);
+    // Render table (hidden initially)
+    if (tableEl && thead && tbody) {
+      renderTableFromObjects(thead, tbody, aggregated);
+      if (tableWrap) tableWrap.hidden = true;
+    }
+
+    // Toggle button to switch views
+    const toggleBtn = document.getElementById('toggle-view');
+    if (toggleBtn) {
+      let mode = 'cards';
+      const gridEl = document.getElementById('game-grid');
+      const setMode = (m) => {
+        mode = m;
+        const showCards = (mode === 'cards');
+        if (gridEl) {
+          gridEl.hidden = !showCards;
+          gridEl.style.display = showCards ? '' : 'none';
+        }
+        if (tableWrap) {
+          tableWrap.hidden = showCards;
+          tableWrap.style.display = showCards ? 'none' : '';
+        }
+        toggleBtn.textContent = showCards ? 'Switch to list view' : 'Switch to cards view';
+      };
+      setMode('cards');
+      toggleBtn.addEventListener('click', () => setMode(mode === 'cards' ? 'table' : 'cards'));
+    }
+
+    if (status) status.textContent = `${aggregated.length} itens`;
   } catch (err) {
     console.error(err);
-    status.textContent = 'Falha ao carregar o CSV. Verifique o caminho ou servidor local.';
+    if (status) status.textContent = 'Falha ao carregar os dados.';
   }
 }
 
-loadCSV();
-
+loadPage();

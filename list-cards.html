@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open Data - Lista</title>
+    <link rel="preload" href="assets/styles.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="assets/styles.css" /></noscript>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="back-link"><a href="./">&larr; Voltar</a></nav>
+      <h1 id="page-title">Lista</h1>
+    </header>
+
+    <main class="container">
+      <section>
+        <div class="controls" style="display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-bottom:10px;">
+          <button id="toggle-view" type="button" style="padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:#0f1218;color:var(--text);cursor:pointer;">Switch to list view</button>
+        </div>
+        <div id="status" class="status">Carregando...</div>
+        <ul id="game-grid" class="list-grid" aria-live="polite"></ul>
+        <div class="table-wrap" id="table-wrap" hidden>
+          <table id="data-table" class="data-table">
+            <thead id="table-head"></thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>Fonte: <code id="csv-path"></code></small>
+    </footer>
+
+    <script src="js/list.js" type="module"></script>
+  </body>
+  </html>
