@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
 """
-Lista interativamente as listas em `list/` e, após a seleção do usuário,
-regera os arquivos `aggregated-list.csv` e `about.csv` usando sempre o CSV mais
-recente de cada fonte (preservando histórico, mas usando só o último arquivo).
+Interactively list all lists under `list/`, let the user pick one by number,
+then regenerate `aggregated-list.csv` and `about.csv` using the most recent CSV
+for each source (history is preserved on disk, but only the latest file per
+source is used).
 
-Detecção de fontes:
-- Se houver subpastas em `list/<lista>/` (ex.: `ign`, `gamesradar+`), cada uma
-  é uma fonte e o script escolhe o CSV mais recente dentro de cada subpasta.
-- Caso contrário, o script agrupa os arquivos `*.csv` do topo por nome de
-  fonte inferido pelo padrão "<fonte> - <timestamp>.csv" e escolhe o mais
-  recente de cada grupo.
+Source detection:
+- If `list/<list>/` has subfolders (e.g., `ign`, `gamesradar+`), each folder is
+  treated as a source and the newest CSV inside is selected.
+- Otherwise, top-level CSVs are grouped by the inferred source name from the
+  pattern "<source> - <timestamp>.csv" and the newest CSV of each group is used.
 
-Formato de saída:
-- `aggregated-list.csv` com colunas: Position,Title,TotalScore,ListsAppeared
-- `about.csv` com colunas: SourceName,SourceURL,SourceId,GeneratedCsvPath
-  - SourceName/URL/Id são preservados do `about.csv` anterior quando possível;
-    se ausentes, preenche com o nome da fonte e campos vazios para URL e Id.
-  - GeneratedCsvPath usa o caminho relativo dentro da pasta da lista
-    (ex.: `ign/ign - 2025-01-17_20-08-18.csv`).
+Outputs:
+- `aggregated-list.csv` columns: Position, Title, TotalScore, ListsAppeared
+- `about.csv` columns: SourceName, SourceURL, SourceId, GeneratedCsvPath
+  - SourceName/URL/Id are preserved from an existing `about.csv` when present;
+    otherwise SourceName is set from the source and URL/Id left blank.
+  - GeneratedCsvPath is written relative to the list directory (e.g.,
+    `ign/ign - 2025-01-17_20-08-18.csv`).
 """
 
 from __future__ import annotations
@@ -36,8 +36,8 @@ TIMESTAMP_RE = re.compile(r" - (\d{4})-(\d{2})-(\d{2})_(\d{2})-(\d{2})-(\d{2})\.
 
 @dataclass
 class SourcePick:
-    name: str                 # nome da fonte (ex.: 'ign', 'gamesradar+')
-    csv_path: Path            # caminho absoluto do csv escolhido
+    name: str                 # source name (e.g., 'ign', 'gamesradar+')
+    csv_path: Path            # absolute path to the chosen CSV
 
 
 def script_root_list_dir() -> Path:
@@ -67,21 +67,16 @@ def latest_csv_in_dir(dir_path: Path) -> Optional[Path]:
     if not files:
         return None
 
-    def sort_key(p: Path):
-        ts = parse_timestamp_from_filename(p.name)
-        # Prioriza arquivos com timestamp; senão usa mtime
-        return (1, ts) if ts else (0, tuple())  # primário: tem timestamp
-
-    # Primeiro, filtre os que têm timestamp válido
+    # Prefer files with a timestamp in the filename; otherwise fall back to mtime
     with_ts = [p for p in files if parse_timestamp_from_filename(p.name)]
     if with_ts:
         return max(with_ts, key=lambda p: parse_timestamp_from_filename(p.name))
-    # fallback por mtime
+    # Fallback to mtime when no timestamped files are found
     return max(files, key=lambda p: p.stat().st_mtime)
 
 
 def pick_sources_for_list(list_dir: Path) -> List[SourcePick]:
-    # Caso 1: subpastas por fonte
+    # Case 1: source-per-subfolder
     source_dirs = [p for p in list_dir.iterdir() if p.is_dir()]
     picks: List[SourcePick] = []
     if source_dirs:
@@ -93,7 +88,7 @@ def pick_sources_for_list(list_dir: Path) -> List[SourcePick]:
         if picks:
             return picks
 
-    # Caso 2: CSVs no topo (sem subpastas)
+    # Case 2: top-level CSVs (no subfolders)
     files = [p for p in list_dir.iterdir() if p.is_file() and p.suffix.lower() == '.csv']
     files = [p for p in files if p.name.lower() not in {'aggregated-list.csv', 'about.csv'}]
     groups: Dict[str, List[Path]] = defaultdict(list)
@@ -103,14 +98,14 @@ def pick_sources_for_list(list_dir: Path) -> List[SourcePick]:
             continue
         groups[src].append(f)
     for src_name, paths in groups.items():
-        # Escolher o mais recente por timestamp no nome; fallback mtime
+        # Choose the most recent by timestamp, falling back to mtime
         with_ts = [p for p in paths if parse_timestamp_from_filename(p.name)]
         if with_ts:
             chosen = max(with_ts, key=lambda p: parse_timestamp_from_filename(p.name))
         else:
             chosen = max(paths, key=lambda p: p.stat().st_mtime)
         picks.append(SourcePick(name=src_name, csv_path=chosen))
-    # Ordena por nome para determinismo
+    # Sort by name for deterministic output
     picks.sort(key=lambda x: x.name.lower())
     return picks
 
@@ -128,7 +123,7 @@ def aggregate_rows(rows: Iterable[Dict[str, str]]) -> List[Dict[str, object]]:
         title = r.get('Title', '').strip()
         if not title:
             continue
-        # Score pode vir como string/float/int — normaliza para int
+        # Score may come as string/float/int - normalize to int
         score_val = r.get('Score', '0')
         try:
             score = int(float(score_val))
@@ -136,8 +131,7 @@ def aggregate_rows(rows: Iterable[Dict[str, str]]) -> List[Dict[str, object]]:
             score = 0
         entry = agg.setdefault(title, {'TotalScore': 0, 'ListsAppeared': 0, 'ReleaseYear': None, 'SeenSources': set()})
         entry['TotalScore'] = int(entry['TotalScore']) + score
-        # Conta aparições por arquivo de origem; usa título como proxy de presença
-        # O chamador garante unicidade por fonte.
+        # Count appearances per source file; caller ensures uniqueness per source
         src_marker = r.get('SourceFile') or ''
         if src_marker not in entry['SeenSources']:
             entry['SeenSources'].add(src_marker)
@@ -157,7 +151,7 @@ def aggregate_rows(rows: Iterable[Dict[str, str]]) -> List[Dict[str, object]]:
             'ListsAppeared': int(data['ListsAppeared']),
         })
     out.sort(key=lambda x: x['TotalScore'], reverse=True)
-    # Adiciona Position
+    # Add Position
     for i, row in enumerate(out, start=1):
         row['Position'] = i
     return out
@@ -220,19 +214,19 @@ def list_available_lists(root: Path) -> List[Path]:
 
 
 def prompt_choice(options: List[Path]) -> Optional[int]:
-    print('Listas disponíveis:')
+    print('Available lists:')
     for i, p in enumerate(options, start=1):
         print(f"[{i}] {p.name}")
     while True:
-        choice = input('Digite o número da lista (ou q para sair): ').strip()
+        choice = input('Enter the list number (or q to quit): ').strip()
         if choice.lower() in {'q', 'quit', 'exit'}:
             return None
         if not choice.isdigit():
-            print('Entrada inválida. Tente novamente.')
+            print('Invalid input. Please try again.')
             continue
         idx = int(choice)
         if not (1 <= idx <= len(options)):
-            print('Número fora do intervalo. Tente novamente.')
+            print('Number out of range. Please try again.')
             continue
         return idx - 1
 
@@ -240,26 +234,26 @@ def prompt_choice(options: List[Path]) -> Optional[int]:
 def main() -> None:
     root = script_root_list_dir()
     if not root.exists():
-        print(f"Erro: pasta 'list' não encontrada em {root}", file=sys.stderr)
+        print(f"Error: 'list' folder not found at {root}", file=sys.stderr)
         sys.exit(1)
 
     lists = list_available_lists(root)
     if not lists:
-        print('Nenhuma lista encontrada.')
+        print('No lists found.')
         sys.exit(0)
 
     idx = prompt_choice(lists)
     if idx is None:
-        print('Cancelado.')
+        print('Cancelled.')
         return
     list_dir = lists[idx]
 
     picks = pick_sources_for_list(list_dir)
     if not picks:
-        print(f"Nenhuma fonte encontrada em {list_dir}.")
+        print(f"No sources found in {list_dir}.")
         return
 
-    # Lê linhas das fontes escolhidas; anota o nome do arquivo como marcador
+    # Read rows from the chosen sources; mark the source filename for counting
     combined_rows: List[Dict[str, str]] = []
     for p in picks:
         for r in read_source_rows(p.csv_path):
@@ -271,8 +265,8 @@ def main() -> None:
     agg_path = write_aggregated(list_dir, agg_rows)
     about_path = write_about(list_dir, picks)
 
-    print(f"Gerado: {agg_path}")
-    print(f"Gerado: {about_path}")
+    print(f"Written: {agg_path}")
+    print(f"Written: {about_path}")
 
 
 if __name__ == '__main__':
