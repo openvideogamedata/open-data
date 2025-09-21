@@ -65,6 +65,8 @@ function renderCards(rootEl, aggregated, coverMap) {
     const plainTitle = baseTitle(title);
     const coverId = coverMap.get(plainTitle) || '';
 
+    const coverWrap = document.createElement('div');
+    coverWrap.className = 'cover-wrap';
     if (coverId) {
       const img = document.createElement('img');
       img.className = 'game-card-cover';
@@ -73,7 +75,28 @@ function renderCards(rootEl, aggregated, coverMap) {
       img.title = title;
       img.width = 166;
       img.height = 224;
-      li.appendChild(img); } else { const ph = document.createElement('div'); ph.className = 'game-card-cover placeholder'; ph.setAttribute('aria-hidden','true'); ph.style.width='166px'; ph.style.height='224px'; li.appendChild(ph); }const titleEl = document.createElement('div'); titleEl.className = 'game-card-title'; titleEl.textContent = '#' + row.Position + ' \u2014 ' + title; li.appendChild(titleEl); const meta = document.createElement('small'); meta.className = 'game-card-meta'; meta.textContent = 'Score: ' + row.TotalScore + ' - Lists: ' + row.ListsAppeared; li.appendChild(meta);
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      coverWrap.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'game-card-cover placeholder';
+      ph.setAttribute('aria-hidden','true');
+      coverWrap.appendChild(ph);
+    }
+    li.appendChild(coverWrap);
+    const badge = document.createElement('span');
+    badge.className = 'badge-pos';
+    badge.textContent = '#' + row.Position;
+    li.appendChild(badge);
+    const titleEl = document.createElement('div');
+    titleEl.className = 'game-card-title';
+    titleEl.textContent = title;
+    li.appendChild(titleEl);
+    const meta = document.createElement('small');
+    meta.className = 'game-card-meta';
+    meta.textContent = 'Score: ' + row.TotalScore + ' - Lists: ' + row.ListsAppeared;
+    li.appendChild(meta);
 
     frag.appendChild(li);
   });
