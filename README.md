@@ -1,28 +1,34 @@
 # Open Video Game Data
 
-This repository hosts a collection of CSV files containing curated "best of" and "most anticipated" video game lists from a wide variety of websites. It aims to provide an easy-to-use open dataset for anyone interested in analyzing how different outlets rank video games across years, platforms and genres.
+This repository hosts a collection of CSV files containing curated "best of" and "most anticipated" video game lists from a wide variety of websites. It aims to provide an easy-to-use open dataset for analyzing how different outlets rank video games across years, platforms, and genres.
 
-## Repository structure
+## Repository Structure
 
-Each top-level directory represents a specific ranking theme. Examples include:
+- The `list/` folder contains one subfolder per ranking theme. Examples:
+  - `list/best_games_of_1995` — best games released in 1995
+  - `list/best_games_of_the_playstation_2` — best games for the PlayStation 2
+  - `list/best_rpg_games_of_all_time` — notable RPGs across years
+  - `list/most_anticipated_games_of_2024` — games expected to release in 2024
 
-- **best_games_of_1995** – lists the best games released in 1995.
-- **best_games_of_the_playstation_2** – best games for the PlayStation 2 console.
-- **best_rpg_games_of_all_time** – notable role-playing games across all years.
-- **most_anticipated_games_of_2024** – games expected to release in 2024.
+Inside each `list/<theme>/` directory you will typically find:
 
-Inside each directory you will find:
+- `about.csv` — metadata describing the sources used for the aggregated list
+- `aggregated-list.csv` — the aggregated ranking built from all sources
+- One or more source CSV files named like `<source> - YYYY-MM-DD_HH-MM-SS.csv`
+  - Source CSVs may be kept directly in `list/<theme>/` or inside subfolders
+    named after the source (e.g., `list/<theme>/ign/...`). Subfolders help
+    preserve multiple historical snapshots per source.
 
-1. `about.csv` – metadata describing the ranking. It contains the columns `Title`, `Year`, `Tags` and `SourceURL` indicating the primary source for that list.
-2. One or more ranking CSV files named in the form `website - YYYY-MM-DD_HH-MM-SS.csv`. These files contain the scraped ranking as it appeared on that date.
+## Data Formats
 
-The ranking files share a common structure with columns:
-
-```
-Position,Title,ReleaseDate,ExternalId,Score,GameId,CoverImageId
-```
-
-Values such as `ExternalId`, `GameId` and `CoverImageId` correspond to identifiers used by the source site or other public databases.
+- Source CSV (per site snapshot):
+  - Columns: `Position,Title,ReleaseDate,ExternalId,Score,GameId,CoverImageId`
+- Aggregated list CSV (per theme):
+  - Columns: `Position,Title,TotalScore,ListsAppeared`
+- `about.csv` (per theme):
+  - Columns: `SourceName,SourceURL,SourceId,GeneratedCsvPath`
+  - `GeneratedCsvPath` is the relative path (inside the theme folder) to the
+    most recent CSV used for that source.
 
 ## Usage
 
@@ -33,12 +39,24 @@ Example (Python):
 ```python
 import pandas as pd
 
-# Load metadata for a given category
-meta = pd.read_csv('best_games_of_1995/about.csv')
+# Load metadata for a given theme
+meta = pd.read_csv('list/best_games_of_1995/about.csv')
 
-# Load one of the ranking lists
-ranking = pd.read_csv('best_games_of_1995/wikipedia (en) - 2023-09-26_22-42-24.csv')
+# Load one of the ranking lists (direct file or inside a source subfolder)
+ranking = pd.read_csv('list/best_games_of_1995/wikipedia (en)/wikipedia (en) - 2023-09-26_22-42-24.csv')
 ```
+
+## Scripts
+
+### Rebuild a list (interactive)
+
+Regenerate `aggregated-list.csv` and `about.csv` for a chosen list using the most recent CSV per source.
+
+- Run from the repo root: `python scripts/rebuild_list.py`
+- Or from inside `scripts/`: `python rebuild_list.py`
+- The script lists all directories under `list/`. Enter a number to pick one.
+- It selects the latest CSV for each source (subfolder per source or grouped by filename prefix before ` - `). "Latest" is decided by the timestamp in the filename (` - YYYY-MM-DD_HH-MM-SS.csv`), or by file modification time when no timestamp is present.
+- Outputs are written to the chosen list folder: `aggregated-list.csv` and `about.csv`.
 
 ## License
 
@@ -47,5 +65,4 @@ The data and repository contents are distributed under the MIT License. See the 
 ## Contributing
 
 Feel free to open issues or pull requests if you find any inaccuracies or would like to contribute additional rankings. Please ensure that any new data cites the original source and follows the same CSV format.
-
 
